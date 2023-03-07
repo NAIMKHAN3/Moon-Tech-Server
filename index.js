@@ -20,7 +20,6 @@ async function run() {
 
         app.get('/products', async (req, res) => {
             const result = await productsCollection.find({}).toArray();
-            console.log(result)
             res.send(result)
 
         })
