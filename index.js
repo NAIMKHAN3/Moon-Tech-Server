@@ -29,9 +29,7 @@ async function run() {
         try {
             app.post('/addproduct', async (req, res) => {
                 const product = req.body;
-                console.log(product)
                 const result = await productsCollection.insertOne(product);
-                console.log(result)
                 res.send(result)
             })
         }
@@ -41,10 +39,8 @@ async function run() {
         try {
             app.delete('/deleteproduct/:id', async (req, res) => {
                 const id = req.params.id;
-                console.log(id)
                 const query = { _id: new ObjectId(id) }
                 const result = await productsCollection.deleteOne(query);
-                console.log(result)
                 res.send(result)
             })
         }
