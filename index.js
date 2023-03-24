@@ -26,6 +26,16 @@ async function run() {
         catch {
             res.send({ status: false, message: "Products Not Found" })
         }
+        try {
+            app.post('/addproduct', async (req, res) => {
+                const product = req.body;
+                const result = await productsCollection.insertOne(product);
+                res.send(result)
+            })
+        }
+        catch {
+            res.send({ status: false, message: 'Product Not Insert' })
+        }
 
     }
     catch {
