@@ -26,27 +26,7 @@ async function run() {
         catch {
             res.send({ status: false, message: "Products Not Found" })
         }
-        try {
-            app.post('/addproduct', async (req, res) => {
-                const product = req.body;
-                const result = await productsCollection.insertOne(product);
-                res.send(result)
-            })
-        }
-        catch {
-            res.send({ status: false, message: 'Product Not Insert' })
-        }
-        try {
-            app.delete('/deleteproduct/:id', async (req, res) => {
-                const id = req.params.id;
-                const query = { _id: new ObjectId(id) }
-                const result = await productsCollection.deleteOne(query);
-                res.send(result)
-            })
-        }
-        catch {
-            res.send({ status: false, message: 'Product Not Deleted' })
-        }
+
     }
     catch {
         res.send({ status: false, Message: "Server Is Down" })
